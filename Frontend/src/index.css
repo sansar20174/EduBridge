@@ -389,6 +389,25 @@ select:focus-visible {
   flex-wrap: wrap;
   gap: 14px;
 }
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.hero-content,
+.hero-image {
+  flex: 1;
+  min-width: 300px;
+}
+
+.hero-image img {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+}
 
 .primary-btn,
 .secondary-btn,
@@ -1412,4 +1431,8 @@ select:focus-visible {
   text-align: center;
   padding: 20px;
   color: #94a3b8;
+}
+img {
+  max-width: 100%;
+  display: block;
 }
