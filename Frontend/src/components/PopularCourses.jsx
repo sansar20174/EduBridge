@@ -9,14 +9,16 @@ const PopularCourses = () => {
     fetchCourses();
   }, []);
 
-  const fetchCourses = async () => {
-    try {
-      const res = await api.get("/courses");
-      setCourses(res.data.slice(0, 3));
-    } catch (error) {
-      console.log(error);
-    }
-  };
+const fetchCourses = async () => {
+  try {
+    const res = await api.get("/courses");
+
+    console.log(res.data);
+
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   return (
     <section className="popular-courses">

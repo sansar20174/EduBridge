@@ -1436,3 +1436,126 @@ img {
   max-width: 100%;
   display: block;
 }
+
+
+
+/* ===========================
+   GLOBAL OVERFLOW FIXES
+=========================== */
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  width:100%;
+  overflow-x:hidden;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+/* ===========================
+   HERO OVERRIDES
+   (Overrides earlier hero rules)
+=========================== */
+
+.hero{
+  min-height:calc(100vh - 80px);
+  padding:80px 7%;
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:center;
+  gap:60px;
+  overflow:hidden;
+}
+
+.hero-content,
+.hero-image{
+  min-width:0;
+}
+
+.hero-image{
+  position:relative;
+}
+
+.hero-image img{
+  width:100%;
+  max-width:100%;
+  border-radius:24px;
+  display:block;
+}
+
+.hero-description{
+  color:var(--text-secondary);
+  line-height:1.8;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.hero-stats{
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+
+.hero-stats h2{
+  margin:0;
+  color:var(--brand);
+}
+
+.hero-stats p{
+  margin:6px 0 0;
+}
+
+.floating-card{
+  position:absolute;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 18px;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+  z-index:5;
+}
+
+.card1{
+  top:20px;
+  left:10px;
+}
+
+.card2{
+  right:10px;
+  bottom:110px;
+}
+
+.card3{
+  left:30px;
+  bottom:20px;
+}
+
+@media (max-width:992px){
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .hero-buttons,
+  .hero-stats{
+    justify-content:center;
+  }
+
+  .card1,
+  .card2,
+  .card3{
+    display:none;
+  }
+}
