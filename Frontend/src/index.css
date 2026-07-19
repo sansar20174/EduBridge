@@ -926,3 +926,65 @@ select:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+/* ==========================
+   FEATURES
+========================== */
+
+.features {
+  padding: 100px 7%;
+}
+
+.section-title {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title h2 {
+  font-size: 2.7rem;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.section-title p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 35px;
+  text-align: center;
+  transition: .35s;
+  box-shadow: var(--shadow-sm);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-md);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  color: var(--brand);
+  margin-bottom: 20px;
+}
+
+.feature-card h3 {
+  margin-bottom: 15px;
+  color: var(--text-primary);
+}
+
+.feature-card p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
