@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { FiMoon, FiSun } from "react-icons/fi";
 import { useTheme } from "../context/ThemeContext";
 
 const Navbar = () => {
@@ -26,38 +27,55 @@ const Navbar = () => {
 
         <Link to="/courses">Courses</Link>
 
-        {user ? (
-          <>
-            {user.role === "admin" ? (
-              <Link to="/admin-dashboard">
-                Admin Dashboard
-              </Link>
-            ) : (
-              <Link to="/student-dashboard">
-                My Learning
-              </Link>
-            )}
+        {user &&
+          (user.role === "admin" ? (
+            <Link to="/admin-dashboard">
+              Admin Dashboard
+            </Link>
+          ) : (
+            <Link to="/student-dashboard">
+              My Learning
+            </Link>
+          ))}
 
-            <button
-              className="theme-btn"
-              onClick={toggleTheme}
+        <button
+          type="button"
+          className={`theme-toggle ${
+            theme === "dark" ? "is-dark" : ""
+          }`}
+          onClick={toggleTheme}
+          aria-label={`Switch to ${
+            theme === "light" ? "dark" : "light"
+          } mode`}
+          aria-pressed={theme === "dark"}
+        >
+          <span className="theme-toggle__track" aria-hidden="true">
+            <span
+              className={`theme-toggle__icon theme-toggle__icon--sun ${
+                theme === "light" ? "is-active" : ""
+              }`}
             >
-              {theme === "light" ? "🌙 Dark" : "☀️ Light"}
-            </button>
+              <FiSun />
+            </span>
 
-            <button onClick={handleLogout}>
-              Logout
-            </button>
-          </>
+            <span className="theme-toggle__thumb" aria-hidden="true" />
+
+            <span
+              className={`theme-toggle__icon theme-toggle__icon--moon ${
+                theme === "dark" ? "is-active" : ""
+              }`}
+            >
+              <FiMoon />
+            </span>
+          </span>
+        </button>
+
+        {user ? (
+          <button className="nav-action" onClick={handleLogout}>
+            Logout
+          </button>
         ) : (
           <>
-            <button
-              className="theme-btn"
-              onClick={toggleTheme}
-            >
-              {theme === "light" ? "🌙 Dark" : "☀️ Light"}
-            </button>
-
             <Link to="/login">Login</Link>
 
             <Link to="/signup">Sign Up</Link>
