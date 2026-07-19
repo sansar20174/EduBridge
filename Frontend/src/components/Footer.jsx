@@ -27,8 +27,8 @@ const Footer = () => {
           <div className="footer-social">
             <a href="#"><FaFacebookF /></a>
             <a href="#"><FaTwitter /></a>
-            <a href="#"><FaLinkedinIn /></a>
-            <a href="#"><FaGithub /></a>
+            <a href="www.linkedin.com/in/sansar-kumar-49a232381"><FaLinkedinIn /></a>
+            <a href="https://github.com/sansar20174"><FaGithub /></a>
           </div>
         </div>
 
