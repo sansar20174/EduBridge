@@ -1,3 +1,22 @@
+:root {
+  --bg-color: #f5f7fb;
+  --card-color: #ffffff;
+  --text-color: #1f2937;
+  --secondary-text: #6b7280;
+  --primary-color: #4f46e5;
+  --border-color: #d1d5db;
+  --navbar-color: #ffffff;
+}
+
+body[data-theme="dark"] {
+  --bg-color: #0f172a;
+  --card-color: #1e293b;
+  --text-color: #f8fafc;
+  --secondary-text: #cbd5e1;
+  --primary-color: #818cf8;
+  --border-color: #334155;
+  --navbar-color: #111827;
+}
 * {
   margin: 0;
   padding: 0;
@@ -11,9 +30,11 @@
 }
 
 body {
-  min-width: 320px;
-  min-height: 100vh;
-  background: #f5f7fb;
+  margin: 0;
+  padding: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -35,18 +56,11 @@ button {
 /* Navbar */
 
 .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  min-height: 72px;
-  padding: 0 7%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #ffffff;
-  border-bottom: 1px solid #e8ecf3;
-  box-shadow: 0 4px 20px rgba(20, 40, 80, 0.05);
+  background: var(--navbar-color);
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
 }
+
 
 .logo {
   font-size: 1.6rem;
@@ -165,6 +179,20 @@ button {
 .auth-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 22px rgba(79, 70, 229, 0.18);
+}
+.theme-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.theme-btn:hover {
+  opacity: 0.9;
 }
 
 /* Authentication */

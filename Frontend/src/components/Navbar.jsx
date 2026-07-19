@@ -1,7 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
+
+  const { theme, toggleTheme } = useTheme();
 
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -20,6 +23,7 @@ const Navbar = () => {
 
       <div className="nav-links">
         <Link to="/">Home</Link>
+
         <Link to="/courses">Courses</Link>
 
         {user ? (
@@ -34,13 +38,28 @@ const Navbar = () => {
               </Link>
             )}
 
+            <button
+              className="theme-btn"
+              onClick={toggleTheme}
+            >
+              {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+            </button>
+
             <button onClick={handleLogout}>
               Logout
             </button>
           </>
         ) : (
           <>
+            <button
+              className="theme-btn"
+              onClick={toggleTheme}
+            >
+              {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+            </button>
+
             <Link to="/login">Login</Link>
+
             <Link to="/signup">Sign Up</Link>
           </>
         )}
