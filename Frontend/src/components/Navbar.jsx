@@ -12,7 +12,6 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-
     navigate("/login");
   };
 
@@ -38,47 +37,104 @@ const Navbar = () => {
             </Link>
           ))}
 
-        <button
-          type="button"
-          className={`theme-toggle ${
-            theme === "dark" ? "is-dark" : ""
-          }`}
-          onClick={toggleTheme}
-          aria-label={`Switch to ${
-            theme === "light" ? "dark" : "light"
-          } mode`}
-          aria-pressed={theme === "dark"}
-        >
-          <span className="theme-toggle__track" aria-hidden="true">
-            <span
-              className={`theme-toggle__icon theme-toggle__icon--sun ${
-                theme === "light" ? "is-active" : ""
-              }`}
-            >
-              <FiSun />
-            </span>
-
-            <span className="theme-toggle__thumb" aria-hidden="true" />
-
-            <span
-              className={`theme-toggle__icon theme-toggle__icon--moon ${
-                theme === "dark" ? "is-active" : ""
-              }`}
-            >
-              <FiMoon />
-            </span>
-          </span>
-        </button>
-
         {user ? (
-          <button className="nav-action" onClick={handleLogout}>
-            Logout
-          </button>
+          <>
+            <button
+              className="nav-action"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+
+            <button
+              type="button"
+              className={`theme-toggle ${
+                theme === "dark" ? "is-dark" : ""
+              }`}
+              onClick={toggleTheme}
+              aria-label={`Switch to ${
+                theme === "light" ? "dark" : "light"
+              } mode`}
+              aria-pressed={theme === "dark"}
+            >
+              <span
+                className="theme-toggle__track"
+                aria-hidden="true"
+              >
+                <span
+                  className={`theme-toggle__icon theme-toggle__icon--sun ${
+                    theme === "light"
+                      ? "is-active"
+                      : ""
+                  }`}
+                >
+                  <FiSun />
+                </span>
+
+                <span
+                  className="theme-toggle__thumb"
+                  aria-hidden="true"
+                />
+
+                <span
+                  className={`theme-toggle__icon theme-toggle__icon--moon ${
+                    theme === "dark"
+                      ? "is-active"
+                      : ""
+                  }`}
+                >
+                  <FiMoon />
+                </span>
+              </span>
+            </button>
+          </>
         ) : (
           <>
             <Link to="/login">Login</Link>
 
             <Link to="/signup">Sign Up</Link>
+
+            <button
+              type="button"
+              className={`theme-toggle ${
+                theme === "dark" ? "is-dark" : ""
+              }`}
+              onClick={toggleTheme}
+              aria-label={`Switch to ${
+                theme === "light" ? "dark" : "light"
+              } mode`}
+              aria-pressed={theme === "dark"}
+            >
+              <span
+                className="theme-toggle__track"
+                aria-hidden="true"
+              >
+                <span
+                  className={`theme-toggle__icon theme-toggle__icon--sun ${
+                    theme === "light"
+                      ? "is-active"
+                      : ""
+                  }`}
+                >
+                  <FiSun />
+                </span>
+
+                <span
+                  className="theme-toggle__thumb"
+                  aria-hidden="true"
+                />
+
+                <span
+                  className={`theme-toggle__icon theme-toggle__icon--moon ${
+                    theme === "dark"
+                      ? "is-active"
+                      : ""
+                  }`}
+                >
+                  <FiMoon />
+                </span>
+              </span>
+            </button>
           </>
         )}
       </div>
