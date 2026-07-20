@@ -74,9 +74,7 @@ const Courses = () => {
   // Unenroll
   const handleUnenroll = async (courseId) => {
     try {
-      const response = await api.delete(
-        `/enrollments/${courseId}`
-      );
+      const response = await api.delete(`/enrollments/${courseId}`);
 
       setMessage(response.data.message);
 
