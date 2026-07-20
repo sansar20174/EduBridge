@@ -62,3 +62,29 @@ export const getMyCourses = async (req, res) => {
     });
   }
 };
+
+export const getUnenrolledCourses = async (req, res) => {
+  try {
+    const { courseId } = req.params;
+
+    const enrollment = await Enrollment.findOneAndDelete({
+      student: req.user.id,
+      course: courseId,
+    });
+
+    if (!enrollment) {
+      return res.status(404).json({
+        message: "Enrollment not found",
+      });
+    }
+
+    res.status(200).json({
+      message: "Course unenrolled successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to unenroll",
+      error: error.message,
+    });
+  }
+};

@@ -3,11 +3,13 @@ import api from "../services/api";
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
 
   const user = JSON.parse(localStorage.getItem("user"));
 
+  // Fetch all courses
   const fetchCourses = async () => {
     try {
       const response = await api.get("/courses");
@@ -20,10 +22,29 @@ const Courses = () => {
     }
   };
 
+  // Fetch enrolled courses
+  const fetchEnrollments = async () => {
+    if (!user || user.role === "admin") return;
+
+    try {
+      const response = await api.get("/enrollments/my-courses");
+
+      const ids = response.data.enrollments.map(
+        (enrollment) => enrollment.course._id
+      );
+
+      setEnrolledCourses(ids);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     fetchCourses();
+    fetchEnrollments();
   }, []);
 
+  // Enroll
   const handleEnroll = async (courseId) => {
     if (!user) {
       setMessage("Please login before enrolling");
@@ -41,9 +62,30 @@ const Courses = () => {
       });
 
       setMessage(response.data.message);
+
+      setEnrolledCourses((prev) => [...prev, courseId]);
     } catch (error) {
       setMessage(
         error.response?.data?.message || "Enrollment failed"
+      );
+    }
+  };
+
+  // Unenroll
+  const handleUnenroll = async (courseId) => {
+    try {
+      const response = await api.delete(
+        `/enrollments/${courseId}`
+      );
+
+      setMessage(response.data.message);
+
+      setEnrolledCourses((prev) =>
+        prev.filter((id) => id !== courseId)
+      );
+    } catch (error) {
+      setMessage(
+        error.response?.data?.message || "Unenrollment failed"
       );
     }
   };
@@ -90,12 +132,25 @@ const Courses = () => {
               </div>
 
               {user?.role !== "admin" && (
-                <button
-                  className="primary-btn"
-                  onClick={() => handleEnroll(course._id)}
-                >
-                  Enroll Now
-                </button>
+                enrolledCourses.includes(course._id) ? (
+                  <button
+                    className="secondary-btn"
+                    onClick={() =>
+                      handleUnenroll(course._id)
+                    }
+                  >
+                    Unenroll
+                  </button>
+                ) : (
+                  <button
+                    className="primary-btn"
+                    onClick={() =>
+                      handleEnroll(course._id)
+                    }
+                  >
+                    Enroll Now
+                  </button>
+                )
               )}
             </article>
           ))
