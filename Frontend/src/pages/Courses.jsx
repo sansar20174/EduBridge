@@ -73,21 +73,7 @@ const Courses = () => {
   };
 
   // Unenroll
-  const handleUnenroll = async (courseId) => {
-  const result = await Swal.fire({
-    title: "Unenroll from Course?",
-    text: "You will lose access to this course and its assignments.",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#dc2626",
-    cancelButtonColor: "#6b7280",
-    confirmButtonText: "Yes, Unenroll",
-    cancelButtonText: "Cancel",
-    reverseButtons: true,
-  });
-
-  if (!result.isConfirmed) return;
-
+ const handleUnenroll = async (courseId) => {
   try {
     const response = await api.delete(`/enrollments/${courseId}`);
 
@@ -96,22 +82,11 @@ const Courses = () => {
     setEnrolledCourses((prev) =>
       prev.filter((id) => id !== courseId)
     );
-
-    Swal.fire({
-      title: "Unenrolled!",
-      text: "You have successfully unenrolled from the course.",
-      icon: "success",
-      timer: 1800,
-      showConfirmButton: false,
-    });
   } catch (error) {
-    Swal.fire({
-      title: "Failed",
-      text:
-        error.response?.data?.message ||
-        "Unable to unenroll from the course.",
-      icon: "error",
-    });
+    console.log(error);
+    setMessage(
+      error.response?.data?.message || "Unenrollment failed"
+    );
   }
 };
 
