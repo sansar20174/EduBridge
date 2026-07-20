@@ -63,7 +63,7 @@ export const getMyCourses = async (req, res) => {
   }
 };
 
-export const getUnenrolledCourses = async (req, res) => {
+export const unenrolledCourses = async (req, res) => {
   try {
     const { courseId } = req.params;
 
