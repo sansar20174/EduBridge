@@ -63,7 +63,7 @@ export const getMyCourses = async (req, res) => {
   }
 };
 
-export const unenrollCourses = async (req, res) => {
+export const unenrollCourse = async (req, res) => {
   try {
     const { courseId } = req.params;
 
@@ -74,7 +74,7 @@ export const unenrollCourses = async (req, res) => {
 
     if (!enrollment) {
       return res.status(404).json({
-        message: "Enrollment not found",
+        message: "You are not enrolled in this course",
       });
     }
 
@@ -82,6 +82,7 @@ export const unenrollCourses = async (req, res) => {
       message: "Course unenrolled successfully",
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({
       message: "Failed to unenroll",
       error: error.message,

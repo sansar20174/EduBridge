@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.post("/", authMiddleware, enrollCourse);
 router.get("/my-courses", authMiddleware, getMyCourses);
-router.delete("/unenrolled-courses", authMiddleware, getUnenrolledCourses);
+router.delete("/unenrolled-courses", authMiddleware, unenrollCourse);
 
 export default router;
