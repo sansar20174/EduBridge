@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
+import SweetAlert2 from "sweetalert2";
 import api from "../services/api";
 
 const Courses = () => {
