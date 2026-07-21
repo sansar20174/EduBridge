@@ -1559,3 +1559,18 @@ img{
     display:none;
   }
 }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}

@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { useTheme } from "../context/ThemeContext";
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <Link to="/" className="logo">
+      <image src={logo} alt="EduBridge Logo" className="logo-image" />
         EduBridge
       </Link>
 
