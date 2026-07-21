@@ -5,7 +5,6 @@ import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
-
   const { theme, toggleTheme } = useTheme();
 
   const user = JSON.parse(localStorage.getItem("user"));
@@ -18,9 +17,10 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
+      {/* Logo */}
       <Link to="/" className="logo">
-      <image src={logo} alt="EduBridge Logo" className="logo-image" />
-        EduBridge
+        <img src={logo} alt="EduBridge Logo" className="logo-img" />
+        <span>EduBridge</span>
       </Link>
 
       <div className="nav-links">
@@ -30,59 +30,40 @@ const Navbar = () => {
 
         {user &&
           (user.role === "admin" ? (
-            <Link to="/admin-dashboard">
-              Admin Dashboard
-            </Link>
+            <Link to="/admin-dashboard">Admin Dashboard</Link>
           ) : (
-            <Link to="/student-dashboard">
-              My Learning
-            </Link>
+            <Link to="/student-dashboard">My Learning</Link>
           ))}
 
         {user ? (
           <>
-            <button
-              className="nav-action"
-              onClick={handleLogout}
-            >
+            <button className="nav-action" onClick={handleLogout}>
               Logout
             </button>
 
             <button
               type="button"
-              className={`theme-toggle ${
-                theme === "dark" ? "is-dark" : ""
-              }`}
+              className={`theme-toggle ${theme === "dark" ? "is-dark" : ""}`}
               onClick={toggleTheme}
               aria-label={`Switch to ${
                 theme === "light" ? "dark" : "light"
               } mode`}
               aria-pressed={theme === "dark"}
             >
-              <span
-                className="theme-toggle__track"
-                aria-hidden="true"
-              >
+              <span className="theme-toggle__track">
                 <span
                   className={`theme-toggle__icon theme-toggle__icon--sun ${
-                    theme === "light"
-                      ? "is-active"
-                      : ""
+                    theme === "light" ? "is-active" : ""
                   }`}
                 >
                   <FiSun />
                 </span>
 
-                <span
-                  className="theme-toggle__thumb"
-                  aria-hidden="true"
-                />
+                <span className="theme-toggle__thumb" />
 
                 <span
                   className={`theme-toggle__icon theme-toggle__icon--moon ${
-                    theme === "dark"
-                      ? "is-active"
-                      : ""
+                    theme === "dark" ? "is-active" : ""
                   }`}
                 >
                   <FiMoon />
@@ -98,39 +79,27 @@ const Navbar = () => {
 
             <button
               type="button"
-              className={`theme-toggle ${
-                theme === "dark" ? "is-dark" : ""
-              }`}
+              className={`theme-toggle ${theme === "dark" ? "is-dark" : ""}`}
               onClick={toggleTheme}
               aria-label={`Switch to ${
                 theme === "light" ? "dark" : "light"
               } mode`}
               aria-pressed={theme === "dark"}
             >
-              <span
-                className="theme-toggle__track"
-                aria-hidden="true"
-              >
+              <span className="theme-toggle__track">
                 <span
                   className={`theme-toggle__icon theme-toggle__icon--sun ${
-                    theme === "light"
-                      ? "is-active"
-                      : ""
+                    theme === "light" ? "is-active" : ""
                   }`}
                 >
                   <FiSun />
                 </span>
 
-                <span
-                  className="theme-toggle__thumb"
-                  aria-hidden="true"
-                />
+                <span className="theme-toggle__thumb" />
 
                 <span
                   className={`theme-toggle__icon theme-toggle__icon--moon ${
-                    theme === "dark"
-                      ? "is-active"
-                      : ""
+                    theme === "dark" ? "is-active" : ""
                   }`}
                 >
                   <FiMoon />
