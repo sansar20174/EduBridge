@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { useTheme } from "../context/ThemeContext";
-import logo from "../assets/logo.png";
+
+import lightLogo from "../assets/logo-light.png";
+import darkLogo from "../assets/logo-dark.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -19,8 +21,12 @@ const Navbar = () => {
     <nav className="navbar">
       {/* Logo */}
       <Link to="/" className="logo">
-        <img src={logo} alt="EduBridge Logo" className="logo-img" />
-        <span>EduBridge</span>
+        <img
+          src={theme === "dark" ? darkLogo : lightLogo}
+          alt="EduBridge Logo"
+          className="logo-img"
+        />
+        <span className="logo-text">EduBridge</span>
       </Link>
 
       <div className="nav-links">
@@ -59,7 +65,7 @@ const Navbar = () => {
                   <FiSun />
                 </span>
 
-                <span className="theme-toggle__thumb" />
+                <span className="theme-toggle__thumb"></span>
 
                 <span
                   className={`theme-toggle__icon theme-toggle__icon--moon ${
@@ -95,7 +101,7 @@ const Navbar = () => {
                   <FiSun />
                 </span>
 
-                <span className="theme-toggle__thumb" />
+                <span className="theme-toggle__thumb"></span>
 
                 <span
                   className={`theme-toggle__icon theme-toggle__icon--moon ${
